@@ -1,4 +1,4 @@
-module app
+module github.com/victoriaadiiye/poker
 
 go 1.25.7
 
