@@ -1,9 +1,11 @@
 package main
 
 import (
-	"github.com/victoriaadiiye/poker"
+	"fmt"
 	"log"
-	"net/http"
+	"os"
+
+	"github.com/victoriaadiiye/poker"
 )
 
 const dbFileName = "game.db.json"
@@ -16,9 +18,7 @@ func main() {
 	}
 	defer close()
 
-	server := poker.NewPlayerServer(store)
-
-	if err := http.ListenAndServe(":5000", server); err != nil {
-		log.Fatalf("could not listen on port 5000 %v", err)
-	}
+	fmt.Println("Let's play poker")
+	fmt.Println("Type {Name} wins to record a win")
+	poker.NewCLI(store, os.Stdin).PlayPoker()
 }
